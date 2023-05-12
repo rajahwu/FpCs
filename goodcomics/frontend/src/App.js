@@ -1,6 +1,5 @@
 import { MARVEL_API_KEY } from "./utils/marvelAPI";
 import { useState, useEffect } from "react";
-import { hashedKey } from "./utils/md5Hash";
 
 import "./App.css";
 
@@ -18,7 +17,7 @@ function App() {
 
   useEffect(() => {
     if (resource.data) {
-      console.log("useEffect resource", resource?.data?.results);
+      console.log("useEffect resource", resource?.data);
       setContent(resource.data.results);
     }
   }, [resource]);
@@ -44,8 +43,13 @@ function App() {
         <ul style={{ listStyle: "none" }}>
           {content.map((entry) => (
             <li key={entry.id}>
-              <div>{/* <img src={entry.thumbnail.path} /> */}</div>
-              <div>{entry.name}</div>
+              <p>{entry.name}</p>
+              <img 
+              width={150} 
+              height={150} 
+              src={`${entry.thumbnail.path}.${entry.thumbnail.extension}`}
+              alt={entry.name}
+              />
               <div>
                 {entry.urls.map((url) => (
                   <div>
