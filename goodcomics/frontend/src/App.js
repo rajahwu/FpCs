@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     if (resource.data) {
-      console.log("useEffect resource", resource?.data);
+      console.log("useEffect resource", resource?.data.results);
       setContent(resource.data.results);
     }
   }, [resource]);
@@ -44,22 +44,44 @@ function App() {
           {content.map((entry) => (
             <li key={entry.id}>
               <p>{entry.name}</p>
-              <img 
-              width={150} 
-              height={150} 
-              src={`${entry.thumbnail.path}.${entry.thumbnail.extension}`}
-              alt={entry.name}
+              <img
+                width={150}
+                height={150}
+                src={`${entry.thumbnail.path}.${entry.thumbnail.extension}`}
+                alt={entry.name}
               />
               <div>
                 {entry.urls.map((url) => (
-                  <div>
-                    <a target="_blank" rel="noreferrer" href={url.url}>
+                  <div style={{ display: "inline-block" }}>
+                    <a
+                      style={{
+                        fontSize: "1rem",
+                        padding: "0.5rem",
+                        color: "yellow",
+                        textDecoration: "none",
+                        textTransform: "capitalize",
+                      }}
+                      href={url.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       {url.type}
                     </a>
-                    {" "}
                   </div>
                 ))}
               </div>
+              {entry.description && <div
+             style={{
+              display:"inline-block",
+              width:"450px",
+              height:"250px",
+              backgroundColor: "white",
+              borderRadius: "5px solid black",
+              color: "black"
+             }}
+              >
+              {entry.description}
+              </div>}
             </li>
           ))}
         </ul>
