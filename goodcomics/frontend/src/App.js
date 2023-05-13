@@ -1,18 +1,12 @@
-import { MARVEL_API_KEY } from "./utils/marvelAPI";
 import { useState, useEffect } from "react";
 import ContentCard from "./components/ContentCard";
 
+import { getMarvelCharcters } from "./resources/marvel";
+
 import "./App.css";
 
-async function getMarvelResource(searchTerm) {
-  const data = await fetch(
-    `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchTerm ? searchTerm : "spider"}&${MARVEL_API_KEY}`
-  ).then((data) => data.json());
-  return data;
-}
-
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerms, setSearchTerms] = useState({});
   const [resource, setResource] = useState({});
   const [content, setContent] = useState([]);
 
@@ -25,7 +19,7 @@ function App() {
 
   function handleClick(e) {
     e.preventDefault();
-    getMarvelResource(searchTerm).then((data) => setResource(data));
+    getMarvelCharcters(searchTerms).then((data) => setResource(data));
   }
 
   return (
@@ -34,10 +28,11 @@ function App() {
         <p>GoodComics</p>
         <form>
           <input
+            name="startsWith"
             type="text"
-            placeholder="search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="search starts with"
+            value={searchTerms.startsWith ? searchTerms.startsWith : ""}
+            onChange={(e) => setSearchTerms({searchTerms, ...{ startsWith: e.target.value }})}
           />
           <button onClick={handleClick}>Search</button>
         </form>
