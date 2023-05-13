@@ -25,8 +25,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>GoodComics</p>
+        <h1>GoodComics</h1>
         <form>
+        <p>Search Charcters</p>
           <input
             name="startsWith"
             type="text"

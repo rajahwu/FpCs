@@ -14,6 +14,8 @@ function getParams(searchTerms){
     const urlParams = {}
     if (searchTerms.startsWith) {
         urlParams.startsWith = `nameStartsWith=${searchTerms.startsWith}`
+    } else {
+        urlParams.startsWith = `nameStartsWith=spider`
     }
     return urlParams
   }
