@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { ContentCard } from "../components";
-import { getMarvelCharacters } from "../resources/marvel";
+import {ContentCard} from '../../components'
+import { getMarvelCharacters } from "../../resources/marvel";
 
 const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
   const handleClick = (e) => {
@@ -47,7 +47,6 @@ export default function LandingPage() {
             setResource={setResource}
             setSearchTerms={setSearchTerms}
           />
-       
 
         {content?.map((entry) => (
           <div key={entry.id}>

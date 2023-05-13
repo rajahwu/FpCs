@@ -12,7 +12,7 @@ export async function getMarvelCharacters(searchTerms) {
 
 export async function getMarvelCharactersById(characterId) {
     const data = await fetch(
-        `${baseUrl}/characters/${characterId}?${MARVEL_API_KEY}`
+        `${baseUrl}characters/${characterId}?${MARVEL_API_KEY}`
     ).then((data) => data.json())
     return data
 }

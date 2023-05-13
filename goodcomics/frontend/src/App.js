@@ -1,15 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Link } from "react-router-dom";
-import LandingPage from "./LandingPage";
-import { ContentCard } from "./components";
+import { LandingPage,  CharacterPage } from "./pages";
 import "./App.css";
-
-const CharcterPage = () => (
-  <div>
-    <ContentCard />
-    <Link to="/">Back</Link>
-  </div>
-);
 
 const router = createBrowserRouter([
   {
@@ -18,7 +9,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/characters/:id",
-    element: <CharcterPage />,
+    element: <CharacterPage />,
   },
 ]);
 
