@@ -10,7 +10,7 @@ const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
 
   return (
     <form>
-      <p>Search Characters</p>
+      {/* <p>Search Characters</p> */}
       <input
         name="startsWith"
         type="text"
@@ -31,11 +31,12 @@ export default function LandingPage() {
   const [content, setContent] = useState([]);
 
   useEffect(() => {
+    getMarvelCharacters().then((data) => setResource(data));
     if (resource.data) {
       console.log("Landing Page Resources", resource?.data.results);
       setContent(resource.data.results);
     }
-  }, [resource]);
+  }, [Object.values(resource).length]);
 
   return (
     <div className="App">

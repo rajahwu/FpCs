@@ -1,38 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Figtree&family=Mynerve&family=PT+Serif&family=Ultra&display=swap');
+
+h1 {
+  font-family: 'Bangers', cursive;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: hsla(220, 13%, 18%, 0.5);
+}
+
 .App {
-  text-align: center;
+  text-align: left;
+  margin-left: 50px;
+  padding: 15px;
+  border-radius: 15px 0 0 15px;
+  background-image: url(../public/assests/comicbooks.jpg);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* hex color #282c34 */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: hsla(220, 13%, 18%, 0.7);
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 25px;
+  border-radius: 15px 0 0 15px;
+  /* align-items: center; */
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
