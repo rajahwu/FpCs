@@ -1,4 +1,4 @@
-export default function ContentCard({ title, imageUrl, description, urls, key }) {
+export default function ContentCard({title, imageUrl, description, urls }) {
   return (
     <div
       className="container"
@@ -13,6 +13,7 @@ export default function ContentCard({ title, imageUrl, description, urls, key })
       >
         {urls?.map((url) => (
           <a
+            key={urls.indexOf(url)}
             style={{
               textAlign: "left",
               fontSize: "0.7rem",

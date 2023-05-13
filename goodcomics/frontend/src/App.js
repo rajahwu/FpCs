@@ -7,7 +7,7 @@ import "./App.css";
 
 function App() {
   const [searchTerms, setSearchTerms] = useState({});
-  const [resource, setResource] = useState({});
+  const [resource, setResource] = useState([]);
   const [content, setContent] = useState([]);
 
   useEffect(() => {
@@ -30,23 +30,25 @@ function App() {
           <input
             name="startsWith"
             type="text"
-            placeholder="search starts with"
+            placeholder="starts with"
             value={searchTerms.startsWith ? searchTerms.startsWith : ""}
-            onChange={(e) => setSearchTerms({searchTerms, ...{ startsWith: e.target.value }})}
+            onChange={(e) =>
+              setSearchTerms({ searchTerms, ...{ startsWith: e.target.value } })
+            }
           />
           <button onClick={handleClick}>Search</button>
         </form>
 
-          {content?.map((entry) => (
-            <div key={entry.id}>
+        {content?.map((entry) => (
+          <div key={entry.id}>
             <ContentCard
               title={entry.name}
               imageUrl={`${entry.thumbnail.path}.${entry.thumbnail.extension}`}
               description={entry.description}
               urls={entry.urls}
             />
-            </div>
-          ))}
+          </div>
+        ))}
       </header>
     </div>
   );
