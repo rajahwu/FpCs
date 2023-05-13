@@ -6,7 +6,7 @@ export default function ContentCardImage({ imageUrl, contentId }) {
 
   const handleClick = (e) => {
     getMarvelCharactersById(contentId).then((data) =>
-      console.log(data.data.results[0])
+      console.log("Character Page Resource", data.data.results[0])
     );
     return navigate(`/characters/${contentId}`);
   };

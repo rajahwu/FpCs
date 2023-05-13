@@ -10,11 +10,10 @@ export default function CharacterPage() {
 
   useEffect(() => {
     getMarvelCharactersById(id)
-      // .then(data => console.log(data))
-      .then((data) => setCharacter(data?.data.results[0]));
+      .then((data) => setCharacter(data?.data.results[0]))
   }, [id]);
 
-  // console.log(character.thumbnail.path)
+  
   return (
     character.id && (
       <div style={{ backgroundColor: "#282c34" }}>
