@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ContentCard } from "../components";
 import { getMarvelCharacters } from "../resources/marvel";
 
-const SearchBar = ({ searchTerms, setResource, setSearchTerms }) => {
+const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
   const handleClick = (e) => {
     e.preventDefault();
     getMarvelCharacters(searchTerms).then((data) => setResource(data));
@@ -32,10 +32,11 @@ export default function LandingPage() {
 
   useEffect(() => {
     if (resource.data) {
-      console.log("useEffect resource", resource?.data.results);
+      console.log("Landing Page Resources", resource?.data.results);
       setContent(resource.data.results);
     }
   }, [resource]);
+
 
   return (
     <div className="App">
@@ -43,8 +44,8 @@ export default function LandingPage() {
         <h1>GoodComics</h1>
           <SearchBar
             searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
             setResource={setResource}
+            setSearchTerms={setSearchTerms}
           />
        
 

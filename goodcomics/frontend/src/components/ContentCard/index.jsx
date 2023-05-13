@@ -38,14 +38,6 @@ export default function ContentCard({id, title, imageUrl, description, urls }) {
         style={{display: "flex"}}
       >
       <ContentCardImage imageUrl={imageUrl} contentId={id} />
-      {/* <img
-        style={{borderRadius:"5px"}}
-        className="card-image"
-        src={imageUrl}
-        alt=""
-        width={150}
-        height={150}
-      /> */}
       {description && <p className="description" style={{
               display:"inline-block",
               width:"250px",
