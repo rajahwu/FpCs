@@ -1,4 +1,6 @@
-export default function ContentCard({title, imageUrl, description, urls }) {
+import ContentCardImage from "../ContentCardImage";
+
+export default function ContentCard({id, title, imageUrl, description, urls }) {
   return (
     <div
       className="container"
@@ -35,14 +37,15 @@ export default function ContentCard({title, imageUrl, description, urls }) {
       <div
         style={{display: "flex"}}
       >
-      <img
+      <ContentCardImage imageUrl={imageUrl} contentId={id} />
+      {/* <img
         style={{borderRadius:"5px"}}
         className="card-image"
         src={imageUrl}
         alt=""
         width={150}
         height={150}
-      />
+      /> */}
       {description && <p className="description" style={{
               display:"inline-block",
               width:"250px",

@@ -9,9 +9,7 @@ marvel_keys = {
 
 ts = datetime.now().strftime("%Y%m%d%H%M%S")
 m = hashlib.md5(f'ts{marvel_keys["private"]}{marvel_keys["public"]}'.encode('utf-8'))
-# m.update(f'ts{marvel_keys["private"]}{marvel_keys["public"]}'.encode('utf-8'))
 hash = m.hexdigest()
 
 url_parameter = f'ts={ts}&apikey={marvel_keys["public"]}&hash={hash}'
 
-# print(url_parameter)

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ContentCard from "./components/ContentCard";
 
-import { getMarvelCharcters } from "./resources/marvel";
+import {  getMarvelCharacters } from "./resources/marvel";
 
 import "./App.css";
 
@@ -19,7 +19,7 @@ function App() {
 
   function handleClick(e) {
     e.preventDefault();
-    getMarvelCharcters(searchTerms).then((data) => setResource(data));
+    getMarvelCharacters(searchTerms).then((data) => setResource(data));
   }
 
   return (
@@ -43,6 +43,7 @@ function App() {
         {content?.map((entry) => (
           <div key={entry.id}>
             <ContentCard
+              id={entry.id}
               title={entry.name}
               imageUrl={`${entry.thumbnail.path}.${entry.thumbnail.extension}`}
               description={entry.description}
