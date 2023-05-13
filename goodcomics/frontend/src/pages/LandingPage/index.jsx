@@ -41,7 +41,39 @@ export default function LandingPage() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>GoodComics</h1>
+        <h1 style={{ opacity: 0.9 }}>
+          <span
+            style={{
+              fontSize: "1.8rem",
+              // color: "yellow",
+              opacity: 0.9,
+              textShadow: "5px 5px 2px black",
+            }}
+          >
+            The
+          </span>{" "}
+          Comic{" "}
+          <span
+            style={{
+              fontSize: "3.3rem",
+              color: "yellow",
+              opacity: 0.85,
+              textShadow: "5px 5px 2px black",
+            }}
+          >
+            Stand
+          </span>{" "}
+          <span
+            style={{
+              fontSize: "1.8rem",
+              // color: "yellow",
+              opacity: 0.9,
+              textShadow: "5px 5px 2px black",
+            }}
+          >
+            Club
+          </span>{" "}
+        </h1>
         <SearchBar
           searchTerms={searchTerms}
           setResource={setResource}
