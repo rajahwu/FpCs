@@ -1,6 +1,12 @@
 import ContentCardImage from "../ContentCardImage";
 
-export default function ContentCard({id, title, imageUrl, description, urls }) {
+export default function ContentCard({
+  id,
+  title,
+  imageUrl,
+  description,
+  urls,
+}) {
   return (
     <div
       className="container"
@@ -34,26 +40,33 @@ export default function ContentCard({id, title, imageUrl, description, urls }) {
           </a>
         ))}
       </div>
-      <div
-        style={{display: "flex"}}
-      >
-      <ContentCardImage imageUrl={imageUrl} contentId={id} />
-      {description && <p className="description" style={{
-              display:"inline-block",
-              width:"250px",
-              height:"150px",
+      <div style={{ display: "flex" }}>
+        <ContentCardImage imageUrl={imageUrl} contentId={id} />
+        {description && (
+          <p
+            className="description"
+            style={{
+              display: "inline-block",
+              width: "250px",
+              height: "150px",
               overflow: "hidden",
               fontSize: "0.9rem",
-              margin:"15px",
-              padding:"5px",
+              margin: "15px",
+              padding: "5px",
               backgroundColor: "rgba(55,55,55,0.2)",
               border: "5px solid rgba(255,255,255,0.5)",
               color: "white",
-              borderRadius: "15px"
-             }}>{description}</p>}
-
+              borderRadius: "15px",
+            }}
+          >
+            {description}
+          </p>
+        )}
       </div>
-      <p className="title" style={{ textAlign: "left", margin: "0 0 2.5rem 0" }}>
+      <p
+        className="title"
+        style={{ textAlign: "left", margin: "0 0 2.5rem 0" }}
+      >
         {title}
       </p>
     </div>

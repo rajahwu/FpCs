@@ -2,11 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { getMarvelCharactersById } from "../../resources/marvel";
 
 export default function ContentCardImage({ imageUrl, contentId }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleClick = (e) => {
-    getMarvelCharactersById(contentId)
-      .then((data) => console.log(data.data.results[0]))
+    getMarvelCharactersById(contentId).then((data) =>
+      console.log(data.data.results[0])
+    );
     return navigate(`/characters/${contentId}`);
   };
 

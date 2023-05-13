@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {ContentCard} from '../../components'
+import { ContentCard } from "../../components";
 import { getMarvelCharacters } from "../../resources/marvel";
 
 const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
@@ -10,7 +10,7 @@ const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
 
   return (
     <form>
-      <p>Search Charcters</p>
+      <p>Search Characters</p>
       <input
         name="startsWith"
         type="text"
@@ -37,16 +37,15 @@ export default function LandingPage() {
     }
   }, [resource]);
 
-
   return (
     <div className="App">
       <header className="App-header">
         <h1>GoodComics</h1>
-          <SearchBar
-            searchTerms={searchTerms}
-            setResource={setResource}
-            setSearchTerms={setSearchTerms}
-          />
+        <SearchBar
+          searchTerms={searchTerms}
+          setResource={setResource}
+          setSearchTerms={setSearchTerms}
+        />
 
         {content?.map((entry) => (
           <div key={entry.id}>
