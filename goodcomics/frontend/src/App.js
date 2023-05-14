@@ -1,11 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { LandingPage,  CharacterPage } from "./pages";
+import { SplashPage, HomePage,  CharacterPage } from "./pages";
 import "./App.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LandingPage />,
+    element: <SplashPage />
+  },
+  {
+    path: "/home",
+    element: <HomePage />,
   },
   {
     path: "/characters/:id",

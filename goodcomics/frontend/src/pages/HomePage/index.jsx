@@ -2,10 +2,17 @@ import { useState, useEffect } from "react";
 import { ContentCard, NewsFeed } from "../../components";
 import { getMarvelCharacters } from "../../resources/marvel";
 
-const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
+const SearchBar = ({ searchTerms, setSearchTerms, setResource, setContent, update, setUpdate }) => {
   const handleClick = (e) => {
     e.preventDefault();
-    getMarvelCharacters(searchTerms).then((data) => setResource(data));
+    const setSearchData = async () => {
+      await getMarvelCharacters(searchTerms)
+      .then((data) => setResource(data))
+      .then((resource) => setContent(resource?.data.results))
+      setUpdate(!update)
+    };
+    console.log("seachTearms", searchTerms.startsWith)
+    setSearchData();
   };
 
   return (
@@ -25,18 +32,26 @@ const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
   );
 };
 
-export default function LandingPage() {
+export default function HomePage() {
   const [searchTerms, setSearchTerms] = useState({});
   const [resource, setResource] = useState([]);
   const [content, setContent] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+  const [update, setUpdate] = useState(false)
 
   useEffect(() => {
-    getMarvelCharacters().then((data) => setResource(data));
-    if (resource.data) {
-      console.log("Landing Page Resources", resource?.data.results);
-      setContent(resource.data.results);
-    }
-  }, [Object.values(resource).length]);
+    console.log("useEffect running")
+    const setResourseData = async () => {
+      setIsLoading(true)
+      await getMarvelCharacters().then((data) => setResource(data));
+      if (resource.data) {
+        console.log("Landing Page Resources", resource?.data.results);
+        setContent(resource.data.results);
+       return setIsLoading(false)
+      }
+    };
+    setResourseData();
+  }, [update]);
 
   return (
     <div className="App">
@@ -78,6 +93,9 @@ export default function LandingPage() {
           searchTerms={searchTerms}
           setResource={setResource}
           setSearchTerms={setSearchTerms}
+          setContent={setContent}
+          setUpdate={setUpdate}
+          update={update}
         />
 
         {content?.map((entry) => (
@@ -91,7 +109,6 @@ export default function LandingPage() {
             />
           </div>
         ))}
-
       </header>
       <NewsFeed />
     </div>

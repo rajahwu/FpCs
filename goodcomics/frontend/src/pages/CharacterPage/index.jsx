@@ -1,7 +1,7 @@
 import { ContentCard } from "../../components";
 import { Link, useParams } from "react-router-dom";
 import { getMarvelCharactersById } from "../../resources/marvel";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export default function CharacterPage() {
   const { id } = useParams();
@@ -19,8 +19,8 @@ export default function CharacterPage() {
   return (
     character?.id && (
       <div style={{ backgroundColor: "#282c34" }}>
-        <Link style={{ color: "yellow", textDecoration: "none" }} to="/">
-          Back
+        <Link style={{ color: "yellow", textDecoration: "none" }} to="/home">
+          Home
         </Link>
         <ContentCard
           id={character.id}
