@@ -1,7 +1,7 @@
 import { ContentCard } from "../../components";
 import { Link, useParams } from "react-router-dom";
 import { getMarvelCharactersById } from "../../resources/marvel";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function CharacterPage() {
   const { id } = useParams();
@@ -9,14 +9,19 @@ export default function CharacterPage() {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    getMarvelCharactersById(id)
-      .then((data) => setCharacter(data?.data.results[0]))
-  }, [id]);
+    // console.log("character", character);
+    getMarvelCharactersById(id).then((data) =>
+      setCharacter(data?.data.results[0])
+    );
+  }, []);
 
-  
+  // console.log("character", character?.stories);
   return (
-    character.id && (
+    character?.id && (
       <div style={{ backgroundColor: "#282c34" }}>
+        <Link style={{ color: "yellow", textDecoration: "none" }} to="/">
+          Back
+        </Link>
         <ContentCard
           id={character.id}
           titel={character.name}
@@ -24,9 +29,22 @@ export default function CharacterPage() {
           description={character.description}
           urls={character.urls}
         />
-        <Link style={{ color: "yellow" }} to="/">
-          Back
-        </Link>
+        <div style={{ display: "flex" }}>
+          <ul style={{ listStyle: "none", color: "white" }}>
+            <p>Series {character?.series.available}</p>
+            {character?.series.items.map((entry) => (
+              <li key={character.series.items.indexOf(entry)}>{entry.name}</li>
+            ))}
+          </ul>
+          <ul style={{ listStyle: "none", color: "white" }}>
+            <p>Stories {character?.stories.available}</p>
+            {character?.stories.items.map((entry) => (
+              <li key={character.stories.items.indexOf(entry)}>
+                {entry.name}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   );
