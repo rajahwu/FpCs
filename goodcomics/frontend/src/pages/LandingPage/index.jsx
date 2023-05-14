@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ContentCard } from "../../components";
+import { ContentCard, NewsFeed } from "../../components";
 import { getMarvelCharacters } from "../../resources/marvel";
 
 const SearchBar = ({ searchTerms, setSearchTerms, setResource }) => {
@@ -91,7 +91,9 @@ export default function LandingPage() {
             />
           </div>
         ))}
+
       </header>
+      <NewsFeed />
     </div>
   );
 }

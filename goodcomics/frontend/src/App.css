@@ -16,6 +16,7 @@ body {
   padding: 15px;
   border-radius: 15px 0 0 15px;
   background-image: url(../public/assests/comicbooks.jpg);
+  display: flex;
 }
 
 /* hex color #282c34 */

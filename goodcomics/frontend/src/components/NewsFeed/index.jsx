@@ -1,29 +1,27 @@
 import { useState, useEffect } from "react";
-import Parser from "rss-parser";
+// import Parser from "rss-parser";
 
 export default function NewsFeed() {
   const [feedItems, setFeedItems] = useState([]);
   // const [loading, isLoading] = useState(true)
 
   useEffect(() => {
-    const fetchRssFeed = async () => {
-      try {
-        const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
-        const parser = new Parser();
-        const feed = await parser.parseURL(CORS_PROXY +
-          "https://1comicbooksblog.blogspot.com/feeds/posts/default?alt=rss"
-        );
-        setFeedItems(feed.items);
-      } catch (error) {
-        console.error("Error fetching RSS feed: ", error);
-      }
-    };
-    fetchRssFeed();
+    fetch("/api/rss-feed")
+      .then((response) => response.json())
+      //  .then(data => console.log("rss feed", data))
+      .then((items) => setFeedItems(items))
+      .catch((error) => console.error(error));
+
+    console.log("feed items state", feedItems);
   }, []);
 
   return (
-    <div>
-      {feedItems.map((item, index) => (
+    <div
+      className="App-header"
+      style={{ borderRadius: 0, paddingLeft: "300px", width: "250px" }}
+    >
+      News Feed
+      {feedItems?.map((item, index) => (
         <div key={index}>
           <p>Title: {item.title}</p>
           <p>{item.contentSnippet}</p>
