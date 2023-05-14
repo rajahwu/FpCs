@@ -13,6 +13,7 @@ sqlalchemy = "*"
 wtforms = "*"
 flask-wtf = "*"
 requests = "*"
+feedparser = "*"
 
 [dev-packages]
 pylint = "*"
