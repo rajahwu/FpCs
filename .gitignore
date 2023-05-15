@@ -2,3 +2,4 @@
 *.db
 .venv
 node_modules
+notes.txt

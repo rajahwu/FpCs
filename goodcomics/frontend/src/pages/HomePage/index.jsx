@@ -2,16 +2,23 @@ import { useState, useEffect } from "react";
 import { ContentCard, NewsFeed } from "../../components";
 import { getMarvelCharacters } from "../../resources/marvel";
 
-const SearchBar = ({ searchTerms, setSearchTerms, setResource, setContent, update, setUpdate }) => {
+const SearchBar = ({
+  searchTerms,
+  setSearchTerms,
+  setResource,
+  setContent,
+  update,
+  setUpdate,
+}) => {
   const handleClick = (e) => {
     e.preventDefault();
     const setSearchData = async () => {
       await getMarvelCharacters(searchTerms)
-      .then((data) => setResource(data))
-      .then((resource) => setContent(resource?.data.results))
-      setUpdate(!update)
+        .then((data) => setResource(data))
+        .then((resource) => setContent(resource?.data.results));
+      setUpdate(!update);
     };
-    console.log("seachTearms", searchTerms.startsWith)
+    console.log("seachTearms", searchTerms.startsWith);
     setSearchData();
   };
 
@@ -36,18 +43,18 @@ export default function HomePage() {
   const [searchTerms, setSearchTerms] = useState({});
   const [resource, setResource] = useState([]);
   const [content, setContent] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
-  const [update, setUpdate] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect running")
+    console.log("useEffect running");
     const setResourseData = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       await getMarvelCharacters().then((data) => setResource(data));
       if (resource.data) {
         console.log("Landing Page Resources", resource?.data.results);
         setContent(resource.data.results);
-       return setIsLoading(false)
+        return setIsLoading(false);
       }
     };
     setResourseData();
